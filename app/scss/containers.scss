@@ -1,0 +1,130 @@
+$body : darkgrey;
+$div : white;
+
+@mixin border-radius($radius){
+    
+-moz-border-radius: $radius;    
+-webkit-border-radius: $radius;
+border-radius: $radius;
+}
+
+
+@mixin transform($transform) {
+    @each $prefix in -moz, -ms, -o, -webkit {
+		#{$prefix}-transform: $transform;
+	}
+          transform: $transform;
+}
+
+@mixin backface( $style: visible ) {
+	@each $prefix in -moz, -ms, -o, -webkit {
+		#{$prefix}-backface-visibility: $style;
+	}
+	backface-visibility: $style;
+}
+
+
+@mixin overflow($overflow: ellipsis){
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: $overflow;
+}
+
+
+body{
+    background-color: $body;
+
+  
+    
+    header{
+        background-color: grey;
+        min-height: 5em;
+    }
+    
+    .overflow{
+        
+        @include overflow;
+        
+        &:hover{
+            width: auto;
+        }
+    }
+    
+    .container{
+         padding: 5em;
+        background-color: $div;
+        min-height: auto;
+        min-width: auto;
+        margin-top: 5em;
+    }
+    
+    .pfancy{
+          p{
+        background-color: whitesmoke;
+        margin: 2em;
+        margin-top: 2em;
+        margin-bottom: 1em;
+        width: 5em;
+        text-align: center;
+        display: inline-block;
+        padding: 1em;
+        font-weight: bold;
+        font-size: 2em;
+        border: 5px solid darkgrey;
+        
+        
+        &:hover{
+            border: 5px solid cadetblue;
+         
+        }
+    }
+    }
+    
+    
+    #border1{
+        @include border-radius(50px 0px 0px 50px);
+      
+        &:hover{
+               @include transform(translate(2em));
+        }
+      
+    }
+    
+    #border2{
+        @include border-radius(0px 50px 50px 0px);
+        
+        &:hover{
+            @include transform(rotate(50deg));
+        }
+        
+    }
+    
+    #border3{
+        @include border-radius(50px 0px 50px 0px);
+          &:hover{
+            @include transform(scale(2,2));
+        }
+    }
+    
+    #border4{
+        @include border-radius(0px 50px 0px 50px);
+          &:hover{
+            @include transform(skew(40deg,0deg));
+        }
+    }
+    
+    #border5{
+        
+        width: 10%;
+        @include border-radius(50%);
+                 
+        &:hover{
+            @include transform(rotate(180deg));
+        }
+    }
+    
+    #border6{
+        
+    }
+    
+}

@@ -1,0 +1,55 @@
+
+@mixin blur($blur) {
+    @each $prefix in -moz, -ms, -o, -webkit {
+		#{$prefix}-filter: blur($blur);
+	}
+          filter: blur($blur);
+}
+
+@mixin gray($gray){
+     @each $prefix in -moz, -ms, -o, -webkit {
+		#{$prefix}-filter: grayscale($gray);
+	}
+          filter: grayscale($gray);
+}
+
+@mixin sepia($sepia){
+     @each $prefix in -moz, -ms, -o, -webkit {
+		#{$prefix}-filter: sepia($sepia);
+	}
+          filter: sepia($sepia);
+}
+
+.filters{
+    
+    img{
+
+    max-width: 50%;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+    margin: 5em;
+    
+}
+}
+
+#img1{
+    
+    &:hover{
+        @include blur(5px);
+    }
+}
+
+#img2{
+    
+    &:hover{
+        @include gray(100%);
+    }
+}
+
+#img3{
+    
+    &:hover{
+        @include sepia(100%);
+    }
+}

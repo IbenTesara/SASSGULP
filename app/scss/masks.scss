@@ -1,0 +1,26 @@
+@mixin mask($mask){
+        @each $prefix in -moz, -o, -webkit {
+		#{$prefix}-mask-image: url($mask);
+	}
+          mask-image: url($mask);
+    text-shadow: 0px 0px 30px rgba(30, 28, 28, 0.6);
+    
+}
+
+
+.masks{
+    
+    text-align: center;
+    
+    h1{
+        font-weight: bolder;
+        text-transform: uppercase;
+        margin: 1em;
+        font-size: 10em;
+        color: darkseagreen;
+    }
+    
+    #stone{
+        @include mask("images/stone_1.jpg");
+    }
+}
